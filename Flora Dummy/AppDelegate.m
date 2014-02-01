@@ -8,11 +8,72 @@
 
 #import "AppDelegate.h"
 
+#import "HomeVC.h"
+#import "LanguageArtsVC.h"
+#import "MathVC.h"
+#import "ScienceVC.h"
+#import "SettingsVC.h"
+
 @implementation AppDelegate
+
+@synthesize tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Get the stored data before the view loads
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *gradeNumber = [defaults objectForKey:@"gradeNumber"];
+    NSString *primaryColor = [defaults objectForKey:@"primaryColor"];
+    NSString *secondaryColor = [defaults objectForKey:@"secondaryColor"];
+    NSString *backgroundColor = [defaults objectForKey:@"backgroundColor"];
+
+    // If no grade is saved, assume kindergarten and save setting
+    if (!gradeNumber || [gradeNumber isEqualToString:@""])
+    {
+        gradeNumber = [NSString stringWithFormat:@"Kindergarten"];
+        
+        [defaults setObject:gradeNumber forKey:@"gradeNumber"];
+        [defaults synchronize];
+
+    }
+    
+    // Note about colors:
+    //
+    // Primary color is the color of the text.
+    // Secondary color is the color of outlines, shadows, etc.
+    // Background color is the color of the background (obviously)
+    
+    // If no primary color is saved, assume black and save setting
+    if (!primaryColor || [primaryColor isEqualToString:@""])
+    {
+        primaryColor = [NSString stringWithFormat:@"000000"];
+        
+        [defaults setObject:primaryColor forKey:@"primaryColor"];
+        [defaults synchronize];
+
+    }
+    
+    // If no secondary color is saved, assume gray/white and save setting
+    if (!secondaryColor || [secondaryColor isEqualToString:@""])
+    {
+        secondaryColor = [NSString stringWithFormat:@"EBEBEB"];
+        
+        [defaults setObject:secondaryColor forKey:@"secondaryColor"];
+        [defaults synchronize];
+
+    }
+    
+    // If no backgroundColor color is saved, assume blue and save setting
+    if (!backgroundColor || [backgroundColor isEqualToString:@""])
+    {
+        backgroundColor = [NSString stringWithFormat:@"7EA7D8"];
+        
+        [defaults setObject:backgroundColor forKey:@"backgroundColor"];
+        [defaults synchronize];
+
+    }
+    
+
     return YES;
 }
 							
