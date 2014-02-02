@@ -28,8 +28,8 @@
 		921C73131899BB1A007DFB34 /* MathProblemVC_Normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C73121899BB1A007DFB34 /* MathProblemVC_Normal.m */; };
 		921C73191899FB5F007DFB34 /* Carroll.json in Resources */ = {isa = PBXBuildFile; fileRef = 921C73181899FB5F007DFB34 /* Carroll.json */; };
 		921C731A1899FB5F007DFB34 /* Carroll.json in Resources */ = {isa = PBXBuildFile; fileRef = 921C73181899FB5F007DFB34 /* Carroll.json */; };
-		921C731D189ADE7F007DFB34 /* EquationFormatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatted.m */; };
-		921C731E189ADE7F007DFB34 /* EquationFormatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatted.m */; };
+		921C731D189ADE7F007DFB34 /* EquationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatter.m */; };
+		921C731E189ADE7F007DFB34 /* EquationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatter.m */; };
 		92B1938F1824665A00F1583E /* Page_IntroVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B1938D1824665A00F1583E /* Page_IntroVC.m */; };
 		92B193901824665A00F1583E /* Page_IntroVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B1938E1824665A00F1583E /* Page_IntroVC.xib */; };
 		92B193931825F2F500F1583E /* PageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B193921825F2F500F1583E /* PageManager.m */; };
@@ -103,8 +103,8 @@
 		921C73111899BB1A007DFB34 /* MathProblemVC_Normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathProblemVC_Normal.h; sourceTree = "<group>"; };
 		921C73121899BB1A007DFB34 /* MathProblemVC_Normal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathProblemVC_Normal.m; sourceTree = "<group>"; };
 		921C73181899FB5F007DFB34 /* Carroll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Carroll.json; sourceTree = "<group>"; };
-		921C731B189ADE7F007DFB34 /* EquationFormatted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationFormatted.h; sourceTree = "<group>"; };
-		921C731C189ADE7F007DFB34 /* EquationFormatted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationFormatted.m; sourceTree = "<group>"; };
+		921C731B189ADE7F007DFB34 /* EquationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationFormatter.h; sourceTree = "<group>"; };
+		921C731C189ADE7F007DFB34 /* EquationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationFormatter.m; sourceTree = "<group>"; };
 		92B1938C1824665A00F1583E /* Page_IntroVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page_IntroVC.h; sourceTree = "<group>"; };
 		92B1938D1824665A00F1583E /* Page_IntroVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page_IntroVC.m; sourceTree = "<group>"; };
 		92B1938E1824665A00F1583E /* Page_IntroVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Page_IntroVC.xib; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 			children = (
 				921C73111899BB1A007DFB34 /* MathProblemVC_Normal.h */,
 				921C73121899BB1A007DFB34 /* MathProblemVC_Normal.m */,
-				921C731B189ADE7F007DFB34 /* EquationFormatted.h */,
-				921C731C189ADE7F007DFB34 /* EquationFormatted.m */,
+				921C731B189ADE7F007DFB34 /* EquationFormatter.h */,
+				921C731C189ADE7F007DFB34 /* EquationFormatter.m */,
 			);
 			name = "Math Problems";
 			sourceTree = "<group>";
@@ -469,7 +469,7 @@
 				92E7A1311864E3BA006A712B /* Page_GardenDataVC.m in Sources */,
 				92C261C11840414400FDA09B /* DragObject.m in Sources */,
 				92F4064A1801E19A00668376 /* UIOutlinedLabel.m in Sources */,
-				921C731D189ADE7F007DFB34 /* EquationFormatted.m in Sources */,
+				921C731D189ADE7F007DFB34 /* EquationFormatter.m in Sources */,
 				921C73131899BB1A007DFB34 /* MathProblemVC_Normal.m in Sources */,
 				921894F017F7752A00DFB26B /* main.m in Sources */,
 				92B1938F1824665A00F1583E /* Page_IntroVC.m in Sources */,
@@ -482,7 +482,7 @@
 			files = (
 				9218951217F7752A00DFB26B /* Flora_DummyTests.m in Sources */,
 				92B193A4182F29F200F1583E /* Page_ReadVC.m in Sources */,
-				921C731E189ADE7F007DFB34 /* EquationFormatted.m in Sources */,
+				921C731E189ADE7F007DFB34 /* EquationFormatter.m in Sources */,
 				92C261C21840414400FDA09B /* DragObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

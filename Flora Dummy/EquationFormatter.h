@@ -1,5 +1,5 @@
 //
-//  EquationFormatted.h
+//  EquationFormatter.h
 //  Flora Dummy
 //
 //  Created by Zach Nichols on 1/30/14.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EquationFormatted : NSObject
+@interface EquationFormatter : NSObject
 
 @end

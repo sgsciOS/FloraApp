@@ -1,20 +1,20 @@
 //
-//  EquationFormatted.m
+//  EquationFormatter.m
 //  Flora Dummy
 //
 //  Created by Zach Nichols on 1/30/14.
 //  Copyright (c) 2014 SGSC. All rights reserved.
 //
 
-#import "EquationFormatted.h"
+#import "EquationFormatter.h"
 
-@interface EquationFormatted ()
+@interface EquationFormatter ()
 {
     NSArray *opsArray;
 }
 @end
 
-@implementation EquationFormatted
+@implementation EquationFormatter
 
 -(NSArray *)returnBoxesForEquationString: (NSString *)eqStr
 {
