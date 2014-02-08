@@ -18,7 +18,8 @@
 
 -(NSArray *)returnBoxesForEquationString: (NSString *)eqStr
 {
-    opsArray = [NSArray arrayWithObjects:@"+", @"-", @"*", @"/", @"^", @"(", @")", nil];
+    // NOTE: ADD EQUALITY EXPRESSIONs
+    opsArray = [NSArray arrayWithObjects:@"+", @"-", @"*", @"/", @"^", @"(", @")", @"=", nil];
     
     NSMutableArray *boxes = [[NSMutableArray alloc]init];
     
@@ -26,53 +27,59 @@
     
     for (NSString *component in stringComponents)
     {
-        NSString *firstChar = [component substringWithRange:NSMakeRange(0,1)];
+        if (!component || [component isEqualToString:@""])
+        {
 
-        // Test to see if there is a variable
-        if ([firstChar isEqualToString:@"#"])
+        }else
         {
-            // This indicates a variable
-            NSString *varStr = [component substringWithRange:NSMakeRange(1,component.length-1)];
-
-            [boxes addObject:[self createTextBoxForString:varStr]];
+            NSString *firstChar = [component substringWithRange:NSMakeRange(0,1)];
             
-            break;
-        }
-        
-        // Test to see if there is an answer box requested
-        if ([firstChar isEqualToString:@"?"])
-        {
-            NSString *answerStr = [component substringWithRange:NSMakeRange(1,component.length-1)];
-
-            [boxes addObject:[self createAnswerBoxForAnswer:answerStr]];
-            
-            break;
-        }
-        
-        // Test to see if the string is a number
-        NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-        if ([component rangeOfCharacterFromSet:notDigits].location == NSNotFound)
-        {
-            // String consists only of the digits 0 through 9
-            NSNumber *num = [NSNumber numberWithFloat:component.floatValue];
-            
-            [boxes addObject:[self createNumberTextBoxForNumber:num]];
-            
-            break;
-        }
-        
-        // Test for characters
-        for (NSString *opStr in opsArray)
-        {
-            if ([firstChar isEqualToString:opStr])
+            // Test to see if there is a variable
+            if ([firstChar isEqualToString:@"#"])
             {
-                // We have an operator
-                [boxes addObject:[self createOperatorBoxForOp:component]];
+                // This indicates a variable
+                NSString *varStr = [component substringWithRange:NSMakeRange(1,component.length-1)];
                 
-                break;
+                [boxes addObject:[self createTextBoxForString:varStr]];
+                
+                //break;
+            }
+            
+            // Test to see if there is an answer box requested
+            if ([firstChar isEqualToString:@"?"])
+            {
+                NSString *answerStr = [component substringWithRange:NSMakeRange(1,component.length-1)];
+                
+                [boxes addObject:[self createAnswerBoxForAnswer:answerStr]];
+                
+                //break;
+            }
+            
+            // Test to see if the string is a number
+            NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+            if ([component rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+            {
+                // String consists only of the digits 0 through 9
+                NSNumber *num = [NSNumber numberWithFloat:component.floatValue];
+                
+                [boxes addObject:[self createNumberTextBoxForNumber:num]];
+                
+                //break;
+            }
+            
+            // Test for characters
+            for (NSString *opStr in opsArray)
+            {
+                if ([firstChar isEqualToString:opStr])
+                {
+                    // We have an operator
+                    [boxes addObject:[self createOperatorBoxForOp:component]];
+                    
+                    //break;
+                }
             }
         }
-
+        
     }
 
     return boxes;

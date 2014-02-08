@@ -86,7 +86,7 @@
     
     if (!mathEquation || [mathEquation isEqualToString:@""])
     {
-        mathEquation = [NSString stringWithFormat:@"_2_+_2_=_?_"];
+        mathEquation = [NSString stringWithFormat:@"_2_+_2_+_4_=_?_"];
 
     }
     
@@ -288,9 +288,13 @@
             
             if ([subtype isEqualToString:@"="])
             {
-                operatorLabel.text = @"=";
+                
+            }else if ([subtype isEqualToString:@"+"])
+            {
+
             }
-            
+            operatorLabel.text = subtype;
+
             operatorLabel.backgroundColor = [UIColor clearColor];
             operatorLabel.textColor = primaryColor;
             operatorLabel.font = numberFont;
