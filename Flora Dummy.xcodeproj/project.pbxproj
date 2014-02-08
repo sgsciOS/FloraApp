@@ -31,6 +31,7 @@
 		921C731D189ADE7F007DFB34 /* EquationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatter.m */; };
 		921C731E189ADE7F007DFB34 /* EquationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatter.m */; };
 		9282390418A5D89000223265 /* Garden_Top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9282390318A5D89000223265 /* Garden_Top.jpg */; };
+		9282390618A6A39300223265 /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9282390518A6A39300223265 /* Main2.storyboard */; };
 		92B1938F1824665A00F1583E /* Page_IntroVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B1938D1824665A00F1583E /* Page_IntroVC.m */; };
 		92B193901824665A00F1583E /* Page_IntroVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B1938E1824665A00F1583E /* Page_IntroVC.xib */; };
 		92B193931825F2F500F1583E /* PageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B193921825F2F500F1583E /* PageManager.m */; };
@@ -107,6 +108,7 @@
 		921C731B189ADE7F007DFB34 /* EquationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationFormatter.h; sourceTree = "<group>"; };
 		921C731C189ADE7F007DFB34 /* EquationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationFormatter.m; sourceTree = "<group>"; };
 		9282390318A5D89000223265 /* Garden_Top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Garden_Top.jpg; sourceTree = "<group>"; };
+		9282390518A6A39300223265 /* Main2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main2.storyboard; sourceTree = "<group>"; };
 		92B1938C1824665A00F1583E /* Page_IntroVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page_IntroVC.h; sourceTree = "<group>"; };
 		92B1938D1824665A00F1583E /* Page_IntroVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page_IntroVC.m; sourceTree = "<group>"; };
 		92B1938E1824665A00F1583E /* Page_IntroVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Page_IntroVC.xib; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				921894F217F7752A00DFB26B /* AppDelegate.h */,
 				921894F317F7752A00DFB26B /* AppDelegate.m */,
 				B8810607189D6E1F00424E32 /* Storyboard.storyboard */,
+				9282390518A6A39300223265 /* Main2.storyboard */,
 				9218951B17F775C200DFB26B /* HomeVC.h */,
 				9218951C17F775C200DFB26B /* HomeVC.m */,
 				92E7A12D1864E372006A712B /* Subjects */,
@@ -432,6 +435,7 @@
 				92B193901824665A00F1583E /* Page_IntroVC.xib in Resources */,
 				921894EE17F7752A00DFB26B /* InfoPlist.strings in Resources */,
 				92B193A5182F29F200F1583E /* Page_ReadVC.xib in Resources */,
+				9282390618A6A39300223265 /* Main2.storyboard in Resources */,
 				92C261B41839D40800FDA09B /* apple_green.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
