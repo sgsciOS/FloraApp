@@ -7,6 +7,7 @@
 //
 
 #import "MathProblemVC_Normal.h"
+#import "EquationFormatter.h"
 
 @interface MathProblemVC_Normal ()
 {
@@ -68,6 +69,7 @@
 @implementation MathProblemVC_Normal
 @synthesize problemBoxView, mathBoxView;
 @synthesize buttonsArray, boxesArray, buttonsInfoArray, boxesInfoArray;
+@synthesize mathEquation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,10 +84,20 @@
 {
     [super viewDidLoad];
     
+    if (!mathEquation || [mathEquation isEqualToString:@""])
+    {
+        mathEquation = [NSString stringWithFormat:@"_2_+_2_=_?_"];
+
+    }
+    
+    EquationFormatter *eqFormatter = [[EquationFormatter alloc] init];
+    
+    boxesInfoArray = [eqFormatter returnBoxesForEquationString:mathEquation];
+    
     
     // Dummy data
     // Remove later and replace with JSON data
-    NSMutableDictionary *textBoxDict = [[NSMutableDictionary alloc]init];
+    /*NSMutableDictionary *textBoxDict = [[NSMutableDictionary alloc]init];
     [textBoxDict setObject:@"Text" forKey:@"Type"];
     [textBoxDict setObject:@"Num_Plain" forKey:@"Subtype"];
 
@@ -97,7 +109,7 @@
     
     NSMutableDictionary *operationsDict = [[NSMutableDictionary alloc]init];
     [operationsDict setObject:@"Operator" forKey:@"Type"];
-    [operationsDict setObject:@"Equal" forKey:@"Subtype"];
+    [operationsDict setObject:@"=" forKey:@"Subtype"];
 
     //[operationsDict setObject:nil forKey:@"V_Objects"];
     
@@ -112,9 +124,9 @@
 
     //[internalDict setObject:[NSNumber numberWithInt:10] forKey:@"Value"];
     
-    [answerBoxDict setObject:internalDict forKey:@"V_Objects"];
+    [answerBoxDict setObject:internalDict forKey:@"V_Objects"];*/
     
-    boxesInfoArray = [NSArray arrayWithObjects:textBoxDict, operationsDict, answerBoxDict, nil];
+    //boxesInfoArray = [NSArray arrayWithObjects:textBoxDict, operationsDict, answerBoxDict, nil];
     
     
     NSMutableDictionary *submitButtonDict = [[NSMutableDictionary alloc]init];
@@ -274,7 +286,7 @@
             
             NSString *subtype = (NSString *)[boxInfo objectForKey:@"Subtype"];
             
-            if ([subtype isEqualToString:@"Equal"])
+            if ([subtype isEqualToString:@"="])
             {
                 operatorLabel.text = @"=";
             }

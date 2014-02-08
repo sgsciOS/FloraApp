@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface EquationFormatter : NSObject
+{
+
+}
+
+-(NSArray *)returnBoxesForEquationString: (NSString *)eqStr;
 
 @end

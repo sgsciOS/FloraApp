@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Page_GardenDataVC : UIViewController
+#import "PageVC.h"
+
+@interface Page_GardenDataVC : PageVC<UIPopoverControllerDelegate>
 {
-    
+    UIImage *gardenImage;
 }
 
 @property(nonatomic, retain) IBOutlet UIButton *endButton;
 
-@property (nonatomic, strong) UIImageView *gardenImage;
+@property (nonatomic, strong) UIImageView *gardenImageView;
+
+@property (nonatomic, strong) UIImage *gardenImage;
+
+@property(nonatomic, retain) UIPopoverController *currentPopover;
 
 @end

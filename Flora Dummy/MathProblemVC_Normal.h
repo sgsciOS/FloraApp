@@ -12,11 +12,15 @@
 {
     UIView *problemBoxView;
     UIView *mathBoxView;
+    
+    NSString *mathEquation;
 
 }
 
 @property(nonatomic, retain) UIView *problemBoxView;
 @property(nonatomic, retain) UIView *mathBoxView;
+
+@property(nonatomic, retain) NSString *mathEquation;
 
 @property(nonatomic, retain) NSArray *buttonsArray;
 @property(nonatomic, retain) NSArray *buttonsInfoArray;

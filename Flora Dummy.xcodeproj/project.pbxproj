@@ -30,6 +30,7 @@
 		921C731A1899FB5F007DFB34 /* Carroll.json in Resources */ = {isa = PBXBuildFile; fileRef = 921C73181899FB5F007DFB34 /* Carroll.json */; };
 		921C731D189ADE7F007DFB34 /* EquationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatter.m */; };
 		921C731E189ADE7F007DFB34 /* EquationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 921C731C189ADE7F007DFB34 /* EquationFormatter.m */; };
+		9282390418A5D89000223265 /* Garden_Top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9282390318A5D89000223265 /* Garden_Top.jpg */; };
 		92B1938F1824665A00F1583E /* Page_IntroVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B1938D1824665A00F1583E /* Page_IntroVC.m */; };
 		92B193901824665A00F1583E /* Page_IntroVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B1938E1824665A00F1583E /* Page_IntroVC.xib */; };
 		92B193931825F2F500F1583E /* PageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B193921825F2F500F1583E /* PageManager.m */; };
@@ -105,6 +106,7 @@
 		921C73181899FB5F007DFB34 /* Carroll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Carroll.json; sourceTree = "<group>"; };
 		921C731B189ADE7F007DFB34 /* EquationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationFormatter.h; sourceTree = "<group>"; };
 		921C731C189ADE7F007DFB34 /* EquationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationFormatter.m; sourceTree = "<group>"; };
+		9282390318A5D89000223265 /* Garden_Top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Garden_Top.jpg; sourceTree = "<group>"; };
 		92B1938C1824665A00F1583E /* Page_IntroVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page_IntroVC.h; sourceTree = "<group>"; };
 		92B1938D1824665A00F1583E /* Page_IntroVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page_IntroVC.m; sourceTree = "<group>"; };
 		92B1938E1824665A00F1583E /* Page_IntroVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Page_IntroVC.xib; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				92E7A12E1864E3BA006A712B /* Page_GardenDataVC.h */,
 				92E7A12F1864E3BA006A712B /* Page_GardenDataVC.m */,
 				92E7A1301864E3BA006A712B /* Page_GardenDataVC.xib */,
+				9282390318A5D89000223265 /* Garden_Top.jpg */,
 			);
 			name = Page_GardenData;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F4064F1801ED2D00668376 /* Flora DUmmy 4.png in Resources */,
+				9282390418A5D89000223265 /* Garden_Top.jpg in Resources */,
 				92C261AC18370D1500FDA09B /* Page_DragAndDropVC.xib in Resources */,
 				921894FF17F7752A00DFB26B /* Images.xcassets in Resources */,
 				92C261B81839D40800FDA09B /* apple_yellow.png in Resources */,

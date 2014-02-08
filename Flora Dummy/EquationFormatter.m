@@ -22,7 +22,7 @@
     
     NSMutableArray *boxes = [[NSMutableArray alloc]init];
     
-    NSArray *stringComponents = [eqStr componentsSeparatedByString:@"%"];
+    NSArray *stringComponents = [eqStr componentsSeparatedByString:@"_"];
     
     for (NSString *component in stringComponents)
     {
@@ -78,9 +78,14 @@
     return boxes;
 }
 
+// Individual methods for creating box dictionaries
+
 -(NSDictionary *)createOperatorBoxForOp: (NSString *)opStr;
 {
     NSMutableDictionary *opBox = [[NSMutableDictionary alloc] init];
+    
+    [opBox setObject:@"Operator" forKey:@"Type"];
+    [opBox setObject:opStr forKey:@"Subtype"];
     
     return opBox;
 }
@@ -89,6 +94,9 @@
 {
     NSMutableDictionary *textBox = [[NSMutableDictionary alloc] init];
     
+    [textBox setObject:@"Text" forKey:@"Type"];
+    [textBox setObject:@"String" forKey:@"Subtype"];
+    
     return textBox;
 }
 
@@ -96,12 +104,31 @@
 {
     NSMutableDictionary *textBox = [[NSMutableDictionary alloc] init];
     
+    [textBox setObject:@"Text" forKey:@"Type"];
+    [textBox setObject:@"Num_Plain" forKey:@"Subtype"];
+    
+    NSMutableDictionary *internalDict = [[NSMutableDictionary alloc]init];
+    [internalDict setObject:@"Num_Plain" forKey:@"Type"];
+    [internalDict setObject:num forKey:@"Value"];
+    
+    [textBox setObject:@[internalDict] forKey:@"V_Objects"];
+
     return textBox;
 }
 
 -(NSDictionary *)createAnswerBoxForAnswer: (NSString *)answerStr;
 {
     NSMutableDictionary *ansBox = [[NSMutableDictionary alloc] init];
+    
+    [ansBox setObject:@"Answer" forKey:@"Type"];
+    [ansBox setObject:@"Num_Plain" forKey:@"Subtype"];
+    
+    NSMutableDictionary *internalDict = [[NSMutableDictionary alloc]init];
+    internalDict = nil;
+    internalDict = [[NSMutableDictionary alloc]init];
+    [internalDict setObject:@"Num_Plain" forKey:@"Type"];
+        
+    [ansBox setObject:internalDict forKey:@"V_Objects"];
     
     return ansBox;
 }
