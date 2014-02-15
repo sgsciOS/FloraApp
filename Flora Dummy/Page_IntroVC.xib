@@ -7,13 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Page_IntroVC">
             <connections>
-                <outlet property="dateLabel" destination="RYt-P5-lu6" id="41L-47-fvo"/>
-                <outlet property="nextButton" destination="1sY-Hb-KKB" id="jBn-c0-WxS"/>
-                <outlet property="otherLabel" destination="H72-Ap-KDu" id="rAd-0T-QlK"/>
-                <outlet property="pageControl" destination="TYS-wb-tzh" id="Fs1-eC-Wll"/>
-                <outlet property="previousButton" destination="v4H-Qk-xVn" id="jjz-Tl-wuI"/>
                 <outlet property="summaryTextView" destination="2Oe-gL-7zy" id="roT-16-EmA"/>
-                <outlet property="titleLabel" destination="rtN-KS-PkQ" id="O44-vF-OxV"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -48,32 +42,6 @@
                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TYS-wb-tzh">
-                    <rect key="frame" x="192" y="682" width="640" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </pageControl>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sY-Hb-KKB">
-                    <rect key="frame" x="884" y="682" width="120" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
-                    <state key="normal" title="Next">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="goToNextPage" destination="-1" eventType="touchUpInside" id="NpG-mI-oVt"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4H-Qk-xVn">
-                    <rect key="frame" x="20" y="668" width="120" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
-                    <state key="normal" title="Previous">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="goToPreviousPage" destination="-1" eventType="touchUpInside" id="vgj-YI-6Br"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

@@ -58,7 +58,10 @@
     UIFont *titleFont = [UIFont fontWithName:@"MarkerFelt-Wide" size:72.0];
     UIFont *subtitleFont = [UIFont fontWithName:@"MarkerFelt-Thin" size:36.0];
 
-    
+    primaryColor = [UIColor blackColor];
+    secondaryColor = [UIColor clearColor];
+    backgroundColor = [UIColor clearColor];
+
     // Initialize labels at top of page
     dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(33, 122, 480, 44)];
     dateLabel.text = [NSString stringWithFormat:@"Date: %@", dateString];
@@ -82,15 +85,68 @@
     // to reflect what page we're on.
     [pageControl setCurrentPage: pageNumber.intValue - 1];
     
+    // Add buttons as needed
     previousButton = [[UIButton alloc]
                       initWithFrame:CGRectMake(20, 675, 120, 44)];
-    [previousButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:previousButton];
+    [previousButton addTarget:self action:@selector(goToPreviousPage) forControlEvents:UIControlEventTouchUpInside];
 
     nextButton = [[UIButton alloc]
-                      initWithFrame:CGRectMake(20, 871, 120, 44)];
-    [nextButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:nextButton];
+                  initWithFrame:CGRectMake(871, 675, 120, 44)];
+    [nextButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
+
+    // For testing
+    //[self outlineButton:nextButton];
+    //[self outlineButton:previousButton];
+    
+    previousButton.titleLabel.font = font;
+    nextButton.titleLabel.font = font;
+    
+    // If there are multiple pages
+    if (pageCount.intValue > 0)
+    {
+        // CHeck if the page is first, last, or middle
+        if(pageNumber.intValue == 1)
+        {
+            // First page
+            //
+            // Need a Next button and a Quit button
+            [previousButton setTitle:@"Quit" forState:UIControlStateNormal];
+            [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+
+            
+        }else if(pageNumber.intValue == pageCount.intValue)
+        {
+            // Last page
+            //
+            // Need a Back button and an Finish button.
+            [previousButton setTitle:@"Previous" forState:UIControlStateNormal];
+            [nextButton setTitle:@"Finish" forState:UIControlStateNormal];
+
+        }else
+        {
+            // Need a Back and a Next button
+            [previousButton setTitle:@"Previous" forState:UIControlStateNormal];
+            [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+
+            
+        }
+        
+        [self.view addSubview:previousButton];
+        [self.view addSubview:nextButton];
+        
+        
+    }else
+    {
+        // Single page
+        //
+        // Only need finish button
+        previousButton = nil;
+        [nextButton setTitle:@"Finish" forState:UIControlStateNormal];
+        
+        [self.view addSubview:nextButton];
+
+    }
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -11,13 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface Page_GardenDataVC ()
-{
-    UIColor *primaryColor;
-    UIColor *secondaryColor;
-    UIColor *backgroundColor;
-    
-    UIFont *font;
-    
+{        
     CGVector velocity;
     
     // These constants define the margins for the large garden view
@@ -101,7 +95,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    [super viewWillAppear:animated];
 }
 
 -(void)updateColors

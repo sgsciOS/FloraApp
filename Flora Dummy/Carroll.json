@@ -77,7 +77,7 @@
       ],
       "Science" : [
         {
-          "Name" : "The Earth",
+          "Name" : "The Garden",
           "VCName" : "Module_Reading",
           "Symbol" : "Reading",
           "Completed" : false,
@@ -92,9 +92,9 @@
           ]
         },
         {
-          "Name" : "The Sun",
-          "VCName" : "Module_Reading",
-          "Symbol" : "Reading",
+          "Name" : "The Garden",
+          "VCName" : "Page_GardenDataVC",
+          "Symbol" : "Garden",
           "Completed" : false,
           "Date" : "10/24/2013",
           "PageArray" : [
@@ -103,6 +103,12 @@
               "PageText" : "Welcome!",
               "Graphics" : [],
               "PageVC" : "Page_IntroVC"
+            },
+            {
+              "PageNum" : "",
+              "PageText" : "Welcome!",
+              "Graphics" : [],
+              "PageVC" : "Page_GardenDataVC"
             }
           ]
         }

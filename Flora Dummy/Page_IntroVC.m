@@ -16,7 +16,7 @@
 @end
 
 @implementation Page_IntroVC
-@synthesize titleLabel, nextButton, previousButton, summaryTextView;
+@synthesize titleLabel, summaryTextView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
