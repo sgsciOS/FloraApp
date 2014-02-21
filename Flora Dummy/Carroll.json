@@ -77,7 +77,7 @@
       ],
       "Science" : [
         {
-          "Name" : "The Garden",
+          "Name" : "The Sun",
           "VCName" : "Module_Reading",
           "Symbol" : "Reading",
           "Completed" : false,
@@ -98,12 +98,6 @@
           "Completed" : false,
           "Date" : "10/24/2013",
           "PageArray" : [
-            {
-              "PageNum" : "",
-              "PageText" : "Welcome!",
-              "Graphics" : [],
-              "PageVC" : "Page_IntroVC"
-            },
             {
               "PageNum" : "",
               "PageText" : "Welcome!",

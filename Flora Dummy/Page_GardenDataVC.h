@@ -8,16 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PageVC.h"
+#import "FormattedVC.h"
 
-@interface Page_GardenDataVC : PageVC<UIPopoverControllerDelegate>
+@interface Page_GardenDataVC : FormattedVC<UIPopoverControllerDelegate, UIScrollViewDelegate>
 {
     UIImage *gardenImage;
 }
 
 @property(nonatomic, retain) IBOutlet UIButton *endButton;
 
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *gardenImageView;
+
+@property(nonatomic, retain) NSArray *touchZones;
 
 @property (nonatomic, strong) UIImage *gardenImage;
 

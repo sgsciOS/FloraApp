@@ -313,33 +313,9 @@
         {
             // Create a drag and drop VC
             Page_GardenDataVC *gardenVC = [[Page_GardenDataVC alloc]init];
-            gardenVC.parentManager = self;
-            
-            // Save important data to page
-            gardenVC.pageDictionary = page.pageDictionary;
-            gardenVC.titleString = page.titleString;
-            gardenVC.dateString = page.dateString;
-            gardenVC.pageNumber = page.pageNumber;
-            gardenVC.pageCount = page.pageCount;
             
             
-            // If the direction is 0, bring this page to the screen
-            //
-            // If the direction > 1, go forward and use the page animation
-            // to make a cool forward effect.
-            //
-            // If the direction < 1, go back and use the page animation
-            // to make a cool back effect.
-            if (direction.intValue == 0)
-            {
-                [pageViewController setViewControllers:[NSArray arrayWithObjects:gardenVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-            }else if (direction.intValue >= 0)
-            {
-                [pageViewController setViewControllers:[NSArray arrayWithObjects:gardenVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-            }else
-            {
-                [pageViewController setViewControllers:[NSArray arrayWithObjects:gardenVC, nil] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-            }
+            [pageViewController setViewControllers:[NSArray arrayWithObjects:gardenVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
 
 
