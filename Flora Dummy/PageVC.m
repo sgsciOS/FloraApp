@@ -76,11 +76,11 @@
     [pageControl setCurrentPage: pageNumber.intValue - 1];
     
     // Add buttons as needed
-    previousButton = [[UIButton alloc]
+    previousButton = [[UIButton_Typical alloc]
                       initWithFrame:CGRectMake(20, 675, 120, 44)];
     [previousButton addTarget:self action:@selector(goToPreviousPage) forControlEvents:UIControlEventTouchUpInside];
 
-    nextButton = [[UIButton alloc]
+    nextButton = [[UIButton_Typical alloc]
                   initWithFrame:CGRectMake(871, 675, 120, 44)];
     [nextButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
 

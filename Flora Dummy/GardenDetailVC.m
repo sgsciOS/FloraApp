@@ -8,15 +8,20 @@
 
 #import "GardenDetailVC.h"
 
+#import "UIButton_Typical.h"
+#import "Page_ReadVC.h"
+#import "PageManager.h"
+
 @interface GardenDetailVC ()
 
 @end
 
 @implementation GardenDetailVC
 @synthesize name, description;
-@synthesize nameLabel, descriptionTextView;
+@synthesize nameLabel, descriptionTextView, readMoreButton;
 @synthesize font;
 @synthesize parent;
+@synthesize pageManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,13 +49,25 @@
     [self.view addSubview:nameLabel];
     
     
-    descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(20, 72, 410, 258)];
+    descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(20, 72, 410, 206)];
     descriptionTextView.text = description;
     descriptionTextView.editable = NO;
     descriptionTextView.scrollEnabled = YES;
     descriptionTextView.font = subFont;
     
     [self.view addSubview:descriptionTextView];
+    
+    
+    readMoreButton = [[UIButton_Typical alloc] initWithFrame:CGRectMake(125, 286, 200, 44)];
+    [readMoreButton addTarget:self action:@selector(readMore) forControlEvents:UIControlEventTouchUpInside];
+    
+    readMoreButton.titleLabel.font = font;
+    readMoreButton.titleLabel.textColor = [UIColor whiteColor];
+    readMoreButton.backgroundColor = [UIColor darkGrayColor];
+    //[readMoreButton updateGradientForColors:@[(id)[UIColor redColor], (id)[UIColor lightGrayColor]]];
+    [readMoreButton setTitle:@"Read More" forState:UIControlStateNormal];
+
+    [self.view addSubview:readMoreButton];
 
 }
 
@@ -58,6 +75,33 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)readMore
+{
+    /*Page_ReadVC *prVC = [[Page_ReadVC alloc] initWithParent:self];
+    prVC.titleString = self.name;
+    prVC.pageText = self.description;
+    
+    [self presentViewController:prVC animated:YES completion:nil];*/
+    
+    // Get the information for the activity selected
+    NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];;
+    [activityDict setObject:@"Module" forKey:@"Name"];
+    [activityDict setObject:@"Module_Reading" forKey:@"VCName"];
+    [activityDict setObject:@"Reading" forKey:@"Symbol"];
+    [activityDict setObject:[NSNumber numberWithBool:0] forKey:@"Completed"];
+    [activityDict setObject:[NSDate date] forKey:@"Date"];
+    
+    NSMutableDictionary *page1 = [[NSMutableDictionary alloc] init];
+    [page1 setObject:description forKey:@"PageText"];
+    [page1 setObject:@"Page_IntroVC" forKey:@"PageVC"];
+    
+    [activityDict setObject:@[page1] forKey:@"PageArray"];
+    
+    // Create a PageManager for the activity and store it in THIS view controller.
+    pageManager = [[PageManager alloc]initWithActivity: activityDict forParentViewController:self];
+
 }
 
 @end

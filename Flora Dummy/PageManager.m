@@ -14,6 +14,7 @@
 #import "Page_DragAndDropVC.h"
 #import "MathProblemVC_Normal.h"
 #import "Page_GardenDataVC.h"
+#import "Page_QRCodeVC.h"
 
 @interface PageManager ()
 {
@@ -171,6 +172,13 @@
             introVC.pageNumber = page.pageNumber;
             introVC.pageCount = page.pageCount;
             
+            // Set summary text if there is any
+            if (((NSString *)[page.pageDictionary objectForKey:@"PageText"])
+                && ![(NSString *)[page.pageDictionary objectForKey:@"PageText"] isEqualToString:@""])
+            {
+                introVC.summary = (NSString *)[page.pageDictionary objectForKey:@"PageText"];
+            }
+            
             
             //[parentViewController dismissViewControllerAnimated:NO completion:nil];
             //[parentViewController presentViewController:introVC animated:NO completion:nil];
@@ -316,6 +324,16 @@
             
             
             [pageViewController setViewControllers:[NSArray arrayWithObjects:gardenVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            
+        }else if ([name isEqualToString:@"Page_QRCodeVC"])
+        {
+            // Create a drag and drop VC
+            Page_QRCodeVC *qrVC = [[Page_QRCodeVC alloc]init];
+            
+            UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:qrVC];
+            qrVC.navCont = navCon;
+            
+            [pageViewController setViewControllers:[NSArray arrayWithObjects:navCon, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
 
 

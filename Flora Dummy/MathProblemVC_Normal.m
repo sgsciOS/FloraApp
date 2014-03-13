@@ -86,7 +86,7 @@
     
     if (!mathEquation || [mathEquation isEqualToString:@""])
     {
-        mathEquation = [NSString stringWithFormat:@"_2_+_2_+_4_=_?_"];
+        mathEquation = [NSString stringWithFormat:@"_2_+_4_=_?_"];
 
     }
     

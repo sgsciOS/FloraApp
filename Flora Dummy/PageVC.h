@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FormattedVC.h"
+#import "UIButton_Typical.h"
 
 @interface PageVC : FormattedVC
 {
@@ -47,8 +48,8 @@
 @property(nonatomic, retain) IBOutlet UIPageControl *pageControl;
 
 // Buttons for navigation
-@property(nonatomic, retain) UIButton *nextButton;
-@property(nonatomic, retain) UIButton *previousButton;
+@property(nonatomic, retain) UIButton_Typical *nextButton;
+@property(nonatomic, retain) UIButton_Typical *previousButton;
 
 // Labels for displaying information at top of page
 @property(nonatomic, retain) UILabel *dateLabel;

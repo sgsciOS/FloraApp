@@ -29,6 +29,25 @@
 {
     [super viewDidLoad];
 
+    
+    // Double check to make sure orientation is correct.
+    // iOS 7 introduced a bug where sometimes the VC
+    // doesn't know which orientation it's supposed to be.
+    // Thus, in landscape, it creates a landscape VC but
+    // any reference to its frame will result in portrait
+    // values.
+    CGRect r = self.view.bounds;
+    
+    if (r.size.height > r.size.width)
+    {
+        float w = r.size.width;
+        r.size.width = r.size.height;
+        r.size.height = w;
+    }
+    
+    self.view.bounds = r;
+    
+    
     // Initialize font
     font = [[UIFont alloc]init];
     font = [UIFont fontWithName:@"Marker Felt" size:32.0];

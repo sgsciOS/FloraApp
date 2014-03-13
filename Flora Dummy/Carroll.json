@@ -105,6 +105,21 @@
               "PageVC" : "Page_GardenDataVC"
             }
           ]
+        },
+        {
+          "Name" : "QR Code Hunt",
+          "VCName" : "Page_QRCodeVC",
+          "Symbol" : "QR",
+          "Completed" : false,
+          "Date" : "10/24/2013",
+          "PageArray" : [
+            {
+              "PageNum" : "",
+              "PageText" : "Welcome!",
+              "Graphics" : [],
+              "PageVC" : "Page_QRCodeVC"
+            }
+          ]
         }
       ],
       "Math" : [

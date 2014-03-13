@@ -15,5 +15,6 @@
 }
 
 @property(nonatomic, retain) IBOutlet UITextView *summaryTextView;
+@property(nonatomic, retain) NSString *summary;
 
 @end

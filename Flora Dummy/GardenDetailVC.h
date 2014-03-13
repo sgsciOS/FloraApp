@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIButton_Typical.h"
+#import "PageManager.h"
+
 @interface GardenDetailVC : UIViewController
 {
     NSString *name;
@@ -23,7 +26,10 @@
 
 @property(nonatomic, retain) UILabel *nameLabel;
 @property(nonatomic, retain) UITextView *descriptionTextView;
+@property(nonatomic, retain) UIButton_Typical *readMoreButton;
 
 @property(nonatomic, retain) UIViewController *parent;
+
+@property(nonatomic, retain) PageManager *pageManager;
 
 @end

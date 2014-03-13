@@ -16,7 +16,7 @@
 @end
 
 @implementation Page_IntroVC
-@synthesize titleLabel, summaryTextView;
+@synthesize titleLabel, summaryTextView, summary;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +31,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-        
+    
+    summary = @"Welcome to activity foo, where will you learn to blah and bleh by using bluh.\n\nPress ""Next"" to move on or ""Previous"" to move back.";
+    
     pageControl.numberOfPages = pageCount.intValue;
 }
 
