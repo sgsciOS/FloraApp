@@ -10,6 +10,7 @@
 
 #import "UIButton_Typical.h"
 #import "PageManager.h"
+#import "FormattedVC.h"
 
 @interface GardenDetailVC : UIViewController
 {

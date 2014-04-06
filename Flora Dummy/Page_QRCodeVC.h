@@ -11,16 +11,23 @@
 
 #import "ZBarSDK.h"
 
-#import "FormattedVC.h"
+#import "PageVC.h"
 #import "UIButton_Typical.h"
 
-@interface Page_QRCodeVC : FormattedVC<ZBarReaderDelegate>
+@interface Page_QRCodeVC : PageVC <ZBarReaderDelegate>
 {
     
 }
 
 @property (nonatomic, retain) ZBarReaderViewController *reader;
-@property (strong, nonatomic) UINavigationController *navCont;
 @property (strong, nonatomic) UINavigationController *qrNav;
+
+@property(nonatomic, retain) IBOutlet UITextView *hintTextView;
+@property(nonatomic, retain) IBOutlet UIImageView *solvedImageView;
+
+@property (strong, nonatomic) NSNumber *targetQR;
+@property (strong, nonatomic) NSDictionary *pageDict;
+
+@property (strong, nonatomic) NSNumber *alreadySolved;
 
 @end

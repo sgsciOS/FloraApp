@@ -87,9 +87,9 @@
     
     // Get the information for the activity selected
     NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];;
-    [activityDict setObject:@"Module" forKey:@"Name"];
-    [activityDict setObject:@"Module_Reading" forKey:@"VCName"];
-    [activityDict setObject:@"Reading" forKey:@"Symbol"];
+    [activityDict setObject:@"Garden Stuff" forKey:@"Name"];
+    [activityDict setObject:@"Page_Reading" forKey:@"VCName"];
+    [activityDict setObject:@"Module" forKey:@"Symbol"];
     [activityDict setObject:[NSNumber numberWithBool:0] forKey:@"Completed"];
     [activityDict setObject:[NSDate date] forKey:@"Date"];
     
@@ -97,7 +97,69 @@
     [page1 setObject:description forKey:@"PageText"];
     [page1 setObject:@"Page_IntroVC" forKey:@"PageVC"];
     
-    [activityDict setObject:@[page1] forKey:@"PageArray"];
+    
+    
+    
+    
+    NSMutableDictionary *page2 = [[NSMutableDictionary alloc] init];
+    [page2 setObject:description forKey:@"PageText"];
+    [page2 setObject:@"ModuleVC" forKey:@"PageVC"];
+    
+    
+    NSMutableArray *a = [[NSMutableArray alloc] init];
+    
+
+
+    NSMutableDictionary *t = [[NSMutableDictionary alloc] init];
+    [t setValue:@"TextView" forKey:@"Type"];
+    [t setValue:@[[NSNumber numberWithFloat:540],
+                  [NSNumber numberWithFloat:180],
+                  [NSNumber numberWithFloat:300],
+                  [NSNumber numberWithFloat:200]] forKey:@"Bounds"];
+    
+    NSMutableDictionary *tt = [[NSMutableDictionary alloc] init];
+    [tt setValue:@"TEXTTEXTTEXT" forKey:@"Text"];
+    [t setValue:tt forKey:@"Specials"];
+    
+    
+    
+    NSMutableDictionary *i = [[NSMutableDictionary alloc] init];
+    [i setValue:@"Image" forKey:@"Type"];
+    [i setValue:@[[NSNumber numberWithFloat:540],
+                  [NSNumber numberWithFloat:400],
+                  [NSNumber numberWithFloat:300],
+                  [NSNumber numberWithFloat:300]] forKey:@"Bounds"];
+    NSMutableDictionary *ii = [[NSMutableDictionary alloc] init];
+    [ii setValue:[UIImage imageNamed:@"apple_red.png"] forKey:@"Image"];
+    [i setValue:ii forKey:@"Specials"];
+    
+    
+    NSMutableDictionary *g = [[NSMutableDictionary alloc] init];
+    [g setValue:@"GIF" forKey:@"Type"];
+    [g setValue:@[[NSNumber numberWithFloat:20],
+                  [NSNumber numberWithFloat:180],
+                  [NSNumber numberWithFloat:500],
+                  [NSNumber numberWithFloat:500]] forKey:@"Bounds"];
+    NSMutableDictionary *gg = [[NSMutableDictionary alloc] init];
+    [gg setValue: [NSArray arrayWithObjects:
+                   UIImageJPEGRepresentation([UIImage imageNamed:@"Wind1.gif"],0.1),
+                   UIImageJPEGRepresentation([UIImage imageNamed:@"Wind2.gif"],0.1),
+                   UIImageJPEGRepresentation([UIImage imageNamed:@"Wind3.gif"],0.1),
+                   UIImageJPEGRepresentation([UIImage imageNamed:@"Wind4.gif"],0.1),
+                  nil]
+          forKey:@"GIFs"];
+    [gg setValue:[NSNumber numberWithFloat:0.35] forKey:@"GIFDuration"];
+    [g setObject:gg forKey:@"Specials"];
+    
+    [a addObjectsFromArray:@[t, i, g]];
+    
+    [page2 setObject:a forKey:@"Content"];
+    
+    
+    
+    
+    
+    [activityDict setObject:[NSArray arrayWithObjects:page1, page2, nil] forKey:@"PageArray"];
     
     // Create a PageManager for the activity and store it in THIS view controller.
     pageManager = [[PageManager alloc]initWithActivity: activityDict forParentViewController:self];

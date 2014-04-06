@@ -19,4 +19,7 @@
 // Subtitle label holds minor text, like "Are you ready to learn?"
 @property(nonatomic, retain) IBOutlet UILabel *subTitleLabel;
 
+// Home screen image view
+@property(nonatomic, retain) IBOutlet UIImageView *homeImageView;
+
 @end

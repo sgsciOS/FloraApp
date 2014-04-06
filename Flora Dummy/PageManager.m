@@ -15,6 +15,7 @@
 #import "MathProblemVC_Normal.h"
 #import "Page_GardenDataVC.h"
 #import "Page_QRCodeVC.h"
+#import "ModuleVC.h"
 
 @interface PageManager ()
 {
@@ -288,7 +289,7 @@
             }
         }else if ([name isEqualToString:@"MathProblemVC_Normal"])
         {
-            // Create a drag and drop VC
+            // Create a math vc
             MathProblemVC_Normal *mathVC = [[MathProblemVC_Normal alloc]init];
             mathVC.parentManager = self;
             
@@ -321,19 +322,62 @@
         {
             // Create a drag and drop VC
             Page_GardenDataVC *gardenVC = [[Page_GardenDataVC alloc]init];
+
+            UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:gardenVC];
             
-            
-            [pageViewController setViewControllers:[NSArray arrayWithObjects:gardenVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            [pageViewController setViewControllers:[NSArray arrayWithObjects:navCon, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
             
         }else if ([name isEqualToString:@"Page_QRCodeVC"])
         {
-            // Create a drag and drop VC
+            // Create a qr code reader
             Page_QRCodeVC *qrVC = [[Page_QRCodeVC alloc]init];
+            qrVC.parentManager = self;
+
+            // Save important data to page
+            qrVC.pageDictionary = page.pageDictionary;
+            qrVC.titleString = page.titleString;
+            qrVC.dateString = page.dateString;
+            qrVC.pageNumber = page.pageNumber;
+            qrVC.pageCount = page.pageCount;
             
-            UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:qrVC];
-            qrVC.navCont = navCon;
+            qrVC.targetQR = [page.pageDictionary objectForKey:@"TargetID"];
+            qrVC.pageDict = page.pageDictionary;
+            [pageViewController setViewControllers:[NSArray arrayWithObjects:qrVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        
+        }else if ([name isEqualToString:@"Page_QR_DetailVC"])
+        {
+            // Create a reading page
+            Page_ReadVC *readVC = [[Page_ReadVC alloc]init];
+            readVC.parentManager = self;
             
-            [pageViewController setViewControllers:[NSArray arrayWithObjects:navCon, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            // Save important data to page
+            readVC.pageText = [page.pageDictionary objectForKey:@"PageText"];
+            
+            readVC.pageDictionary = page.pageDictionary;
+            readVC.titleString = page.titleString;
+            readVC.dateString = page.dateString;
+            readVC.pageNumber = page.pageNumber;
+            readVC.pageCount = page.pageCount;
+            
+            
+            [pageViewController setViewControllers:[NSArray arrayWithObjects:readVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        
+        }else if ([name isEqualToString:@"ModuleVC"])
+        {
+            // Create a reading page
+            ModuleVC *mVC = [[ModuleVC alloc]initWithContent:
+                             (NSArray *)[page.pageDictionary objectForKey:@"Content"]];
+            mVC.parentManager = self;
+            
+            // Save important data to page
+            mVC.pageDictionary = page.pageDictionary;
+            mVC.titleString = page.titleString;
+            mVC.dateString = page.dateString;
+            mVC.pageNumber = page.pageNumber;
+            mVC.pageCount = page.pageCount;
+            
+            
+            [pageViewController setViewControllers:[NSArray arrayWithObjects:mVC, nil] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
 
 

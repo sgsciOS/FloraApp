@@ -7,14 +7,13 @@
 //
 
 #import "Page_QRCodeVC.h"
-#import "Page_QR_DetailVC.h"
 
 @interface Page_QRCodeVC ()
 
 @end
 
 @implementation Page_QRCodeVC
-@synthesize reader, navCont, qrNav;
+@synthesize reader, targetQR, pageDict, hintTextView, alreadySolved, solvedImageView, qrNav;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +31,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    if (!alreadySolved)
+    {
+        // Doesn't exist yet
+        alreadySolved = [NSNumber numberWithBool:NO];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -39,38 +43,85 @@
     [super viewWillAppear:animated];
     
     // Create camera view for QR Code reading
-    reader = [ZBarReaderViewController new];
-    float H = self.view.frame.size.height-200;
+    float tempMargin = 20;
+    float H = super.previousButton.frame.origin.y - super.dateLabel.frame.origin.y - super.dateLabel.frame.size.height - 2 * tempMargin;
     float W = H;
-    reader.view.frame = CGRectMake((self.view.frame.size.width-W) / 2,
-                                   (self.view.frame.size.height-H) / 2,
-                                   W,
-                                   H);
-    NSLog(@"X: %f\tY: %f\tW: %f\tH: %f\n", reader.view.frame.origin.x, reader.view.frame.origin.y,
-          reader.view.frame.size.width, reader.view.frame.size.height);
+    CGRect tempFrame = CGRectMake(self.view.frame.size.width - W - 2 * tempMargin,
+                                 super.dateLabel.frame.origin.y + super.dateLabel.frame.size.height + tempMargin,
+                                 W,
+                                 H);
+
+    if ([alreadySolved isEqualToNumber:[NSNumber numberWithBool:YES]])
+    {
+        // Don't offer QR code
+        
+        // Remove current reader
+        if (reader)
+        {
+            [reader.view removeFromSuperview];
+            reader = nil;
+        }
+        
+        // Add image to say solved
+        solvedImageView = [[UIImageView alloc] initWithFrame:tempFrame];
+        
+        solvedImageView.image = [UIImage imageNamed:@"QRComplete.png"];
+        
+        [self.view addSubview:solvedImageView];
+        
+    }else
+    {
+        // Offer QR Code
+        
+        // Remove image view if exists
+        if (solvedImageView)
+        {
+            [solvedImageView removeFromSuperview];
+            solvedImageView = nil;
+        }
+        
+        reader = [ZBarReaderViewController new];
+
+        reader.view.frame = tempFrame;
+        NSLog(@"X: %f\tY: %f\tW: %f\tH: %f\n", reader.view.frame.origin.x, reader.view.frame.origin.y,
+              reader.view.frame.size.width, reader.view.frame.size.height);
+        
+        reader.readerDelegate = self;
+        
+        [reader.scanner setSymbology:0 config:ZBAR_CFG_ENABLE to:0];
+        [reader.scanner setSymbology:ZBAR_QRCODE config:ZBAR_CFG_ENABLE to:1];
+        
+        reader.readerView.zoom = 1.0;
+        reader.showsCameraControls = NO;
+        reader.showsZBarControls = NO;
+        reader.wantsFullScreenLayout = NO;
+        //reader.title = @"QR Code Reader";
+        [reader.cameraOverlayView removeFromSuperview];
+
+        
+        // The only way to move forward is using the QR code
+        [super.nextButton removeFromSuperview];
+        
+        qrNav = [[UINavigationController alloc] init];
+        [qrNav pushViewController:reader animated:YES];
+        qrNav.view.frame = reader.view.frame;
+        [self.view addSubview:qrNav.view];
+        qrNav.navigationBar.hidden = YES;
+
+    }
     
-    reader.readerDelegate = self;
     
-    [reader.scanner setSymbology:0 config:ZBAR_CFG_ENABLE to:0];
-    [reader.scanner setSymbology:ZBAR_QRCODE config:ZBAR_CFG_ENABLE to:1];
+    // Add text view as well
+    hintTextView = [[UITextView alloc] initWithFrame:CGRectMake(tempMargin * 2,
+                                                                tempFrame.origin.y,
+                                                                self.view.frame.size.width - tempFrame.origin.x - 4 * tempMargin,
+                                                                tempFrame.size.height)];
     
-    reader.readerView.zoom = 1.0;
-    reader.showsCameraControls = NO;
-    reader.showsZBarControls = NO;
-    reader.wantsFullScreenLayout = NO;
-    reader.title = @"QR Code Reader";
-    
-    
-    //[self.view addSubview:reader.view];
-    
-    
-    qrNav = [[UINavigationController alloc]initWithRootViewController:reader];
-    qrNav.view.frame = reader.view.frame;
-    //[navCont pushViewController:reader animated:YES];
-    
-    
-    
-    [self.view addSubview:qrNav.view];
+    // USE THIS LINE TO READ NEW LINE CHARACTERS FROM FILE
+    hintTextView.text = [(NSString *)[pageDict objectForKey:@"PageText"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    [self.view addSubview:hintTextView];
+
+    [self updateColors];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,9 +134,14 @@
 {
     [super updateColors];
     
+    if (hintTextView)
+    {
+        [self outlineTextInTextView:hintTextView];
+        hintTextView.textColor = primaryColor;
+        hintTextView.backgroundColor = secondaryColor;
+    }
+    
 }
-
-
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -104,13 +160,56 @@
     
     NSLog(@"QR-Code: %@", qrCode);
     
-    Page_QR_DetailVC *vc = [[Page_QR_DetailVC alloc]init];
-    vc.textStr = qrCode;
-    //vc.qrImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    NSArray *qrComponents = [qrCode componentsSeparatedByString:@"#"];
+
+    NSLog(@"%@\n%@\n%@\n", [qrComponents objectAtIndex:0], [qrComponents objectAtIndex:1],
+          [qrComponents objectAtIndex:2]);
     
-    [self.qrNav.view removeFromSuperview];
-    self.qrNav = nil;
-    [self.navCont pushViewController:vc animated:YES];
+    // Check if its an SGSC tag and QR tag
+    if ([[qrComponents objectAtIndex:0] isEqualToString:@"SGSC"] &&
+        [[qrComponents objectAtIndex:1] isEqualToString:@"QR"])
+    {
+        // It's valid
+        //
+        
+        NSLog(@"Is %.0f = %.0f?\n", [[qrComponents objectAtIndex:2] floatValue], targetQR.floatValue);
+        
+        // Check if it's the correct code and there are enough components
+        if ((qrComponents.count >= 3) &&
+            ([[qrComponents objectAtIndex:2] floatValue] == targetQR.floatValue))
+        {
+            // It's the correct target
+            
+            alreadySolved = [NSNumber numberWithBool:YES];
+            
+            solvedImageView = [[UIImageView alloc] initWithFrame:qrNav.view.frame];
+            [self.view addSubview:solvedImageView];
+
+            solvedImageView.image = [UIImage imageNamed:@"QRComplete.png"];
+            solvedImageView.alpha = 0.0;
+            
+            
+            [UIView animateWithDuration:0.75
+                                  delay:0.0
+                                options: UIViewAnimationCurveEaseIn
+                             animations:^{
+                                 reader.view.alpha = 0.0;
+                                 solvedImageView.alpha = 1.0;
+                             }
+                             completion:^(BOOL finished){
+                                 [reader.view removeFromSuperview];
+                                 reader = nil;
+                                 [super goToNextPage];
+                             }];
+   
+        }else
+        {
+            // It's not the correct target
+            NSLog(@"Wrong target");
+            
+        }
+    }
+
     
 }
 

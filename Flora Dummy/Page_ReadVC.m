@@ -16,7 +16,7 @@
 @end
 
 @implementation Page_ReadVC
-@synthesize dateLabel, otherLabel, nextButton, previousButton, summaryTextView, pageText;
+@synthesize summaryTextView, pageText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,9 +32,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    //summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(33, 72, 971, 602)];
     summaryTextView.text = pageText;
     
-    pageControl.numberOfPages = pageCount.intValue;
+    super.titleLabel.frame = CGRectMake(super.titleLabel.frame.origin.x,
+                                 super.titleLabel.frame.origin.y,
+                                 super.titleLabel.frame.size.width,
+                                 super.dateLabel.frame.size.height); // on purpose
+    super.titleLabel.font = super.dateLabel.font;
+    
+    super.dateLabel.frame = CGRectMake(super.dateLabel.frame.origin.x,
+                                 20,
+                                 super.dateLabel.frame.size.width,
+                                 super.dateLabel.frame.size.height);
+    super.otherLabel.frame = CGRectMake(super.otherLabel.frame.origin.x,
+                                 20,
+                                 super.otherLabel.frame.size.width,
+                                 super.otherLabel.frame.size.height);
+
 }
 
 - (void)didReceiveMemoryWarning

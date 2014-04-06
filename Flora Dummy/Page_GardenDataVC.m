@@ -23,13 +23,17 @@
     float GV_Y;
     float GV_WIDTH;
     float GV_HEIGHT;
+    
+    BOOL layersOn;
+    
+    NSTimer *shakeTimer;
 }
 
 @end
 
 @implementation Page_GardenDataVC
-@synthesize endButton, gardenImage, scrollView, gardenImageView;
-@synthesize currentPopover, touchZones;
+@synthesize gardenImage, scrollView, gardenImageView;
+@synthesize currentPopover, touchZones, touchLayers;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,10 +44,23 @@
     return self;
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (shakeTimer)
+    {
+        [shakeTimer invalidate];
+    }
+    shakeTimer = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    // Allows us to take start coordinate system below navigation bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     // Double check to make sure orientation is correct.
     // iOS 7 introduced a bug where sometimes the VC
     // doesn't know which orientation it's supposed to be.
@@ -62,6 +79,21 @@
     self.view.bounds = r;
     
     
+    // Hide elements
+    [super.previousButton removeFromSuperview];
+    [super.nextButton removeFromSuperview];
+    [super.titleLabel removeFromSuperview];
+    [super.dateLabel removeFromSuperview];
+    [super.otherLabel removeFromSuperview];
+    for (UIView *v in self.view.subviews)
+    {
+        [v removeFromSuperview];
+    }
+    
+    
+    layersOn = NO;
+    shakeTimer = nil;
+
     
     // Define constants for spacing/sizing
     
@@ -72,8 +104,10 @@
     MARGIN_GV_BOTTOM = 20;
     GV_X = MARGIN_GV_SIDE;
     GV_Y = MARGIN_GV_TOP;
+    float statusHeight = [UIApplication sharedApplication].statusBarFrame.size.width; // since landscape
     GV_WIDTH = self.view.bounds.size.width - (2 * MARGIN_GV_SIDE);
-    GV_HEIGHT = self.view.bounds.size.height - GV_Y - MARGIN_GV_TOP - MARGIN_GV_BOTTOM;
+    GV_HEIGHT = self.view.bounds.size.height - GV_Y - MARGIN_GV_TOP - MARGIN_GV_BOTTOM - self.navigationController.navigationBar.frame.size.height - statusHeight;
+;
     
     
     
@@ -112,6 +146,27 @@
     
     
     
+    
+    // Edit navigation bar
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(popBack)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
+    UIBarButtonItem *layersButton = [[UIBarButtonItem alloc] initWithTitle:@"Layers" style:UIBarButtonItemStylePlain target:self action:@selector(toggleLayers)];
+    self.navigationItem.rightBarButtonItem = layersButton;
+
+    // Edit button appearance for nav bar
+    id barButtonAppearance = [UIBarButtonItem appearance];
+    NSDictionary *barButtonTextAttributes = @{
+                                              UITextAttributeFont: [UIFont fontWithName:@"Marker Felt" size:24.0],
+                                              UITextAttributeTextShadowColor: [UIColor colorWithWhite:0.0f alpha:0.2f],
+                                              UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)]
+                                              };
+    [barButtonAppearance setTitleTextAttributes:barButtonTextAttributes
+                                       forState:UIControlStateNormal];
+    [barButtonAppearance setTitleTextAttributes:barButtonTextAttributes
+                                       forState:UIControlStateHighlighted];
+    
+    
     // Touch zones
     // Places that will trigger UIPopover
     
@@ -129,8 +184,54 @@
     NSString *vcType = @"Normal";
     [firstTouchDict setObject:vcType forKey:@"VCType"];
     
-    touchZones = [[NSArray alloc] initWithObjects:firstTouchDict, nil];
+    NSMutableDictionary *secondTouchDict = [[NSMutableDictionary alloc]initWithCapacity:0];
+    x = [NSNumber numberWithFloat:500.0];
+    y = [NSNumber numberWithFloat:500.0];
+    w = [NSNumber numberWithFloat:300.0];
+    h = [NSNumber numberWithFloat:150.0];
+    bounds = [NSArray arrayWithObjects:x, y, w, h, nil];
+    [secondTouchDict setObject:bounds forKey:@"Zone"];
+    nameString = @"Second Touch";
+    [secondTouchDict setObject:nameString forKey:@"Name"];
+    descriptionStr = @"This is the a nice piece of land.";
+    [secondTouchDict setObject:descriptionStr forKey:@"Description"];
+    vcType = @"Normal";
+    [secondTouchDict setObject:vcType forKey:@"VCType"];
     
+    
+    NSMutableDictionary *thirdTouchDict = [[NSMutableDictionary alloc]initWithCapacity:0];
+    x = [NSNumber numberWithFloat:360.0];
+    y = [NSNumber numberWithFloat:285.0];
+    w = [NSNumber numberWithFloat:120.0];
+    h = [NSNumber numberWithFloat:120.0];
+    bounds = [NSArray arrayWithObjects:x, y, w, h, nil];
+    [thirdTouchDict setObject:bounds forKey:@"Zone"];
+    nameString = @"Third Touch";
+    [thirdTouchDict setObject:nameString forKey:@"Name"];
+    descriptionStr = @"This is the a statue.";
+    [thirdTouchDict setObject:descriptionStr forKey:@"Description"];
+    vcType = @"Normal";
+    [thirdTouchDict setObject:vcType forKey:@"VCType"];
+    
+    
+    touchZones = [[NSArray alloc] initWithObjects:firstTouchDict, secondTouchDict, thirdTouchDict, nil];
+    
+    NSMutableArray *tL = [[NSMutableArray alloc] init];
+    for (NSDictionary *d in touchZones)
+    {
+        NSArray *b = (NSArray *)[d objectForKey:@"Zone"];
+        UIView *l = [[UIView alloc] initWithFrame:CGRectMake([[b objectAtIndex:0] floatValue],
+                                                             [[b objectAtIndex:1] floatValue],
+                                                             [[b objectAtIndex:2] floatValue],
+                                                             [[b objectAtIndex:3] floatValue])];
+        l.backgroundColor = [UIColor whiteColor];
+        l.alpha = 0.50;
+        l.hidden = YES;
+        
+        [tL addObject:l];
+        [gardenImageView addSubview:l];
+    }
+    touchLayers = [[NSArray alloc] initWithArray:tL];
     
     
     
@@ -139,6 +240,45 @@
     font = [[UIFont alloc]init];
     font = [UIFont fontWithName:@"Marker Felt" size:32.0];
 
+}
+
+-(void) popBack
+{
+    [super goToPreviousPage];
+}
+
+-(void)toggleLayers
+{
+    if (layersOn)
+    {
+        // Turn them off
+        layersOn = NO;
+        for (UIView *l in touchLayers)
+        {
+            l.hidden = YES;
+        }
+        
+        [shakeTimer invalidate];
+        shakeTimer = nil;
+        
+    }else
+    {
+        // TUrn them on
+        layersOn = YES;
+        for (UIView *l in touchLayers)
+        {
+            l.hidden = NO;
+        }
+        
+        [self shake];
+        shakeTimer = [NSTimer scheduledTimerWithTimeInterval:8.0
+                                         target:self
+                                       selector:@selector(shake)
+                                       userInfo:nil
+                                        repeats:YES];
+        
+
+    }
 }
 
 - (void)singleTap:(UITapGestureRecognizer *)gesture
@@ -237,5 +377,35 @@
     }
 }
 
+-(void)shake
+{
+    // Shake a random layer every now and then
+    
+    int randomIndex = 0 + arc4random_uniform(touchLayers.count - 1 - 0 + 1);
+    
+    UIView *l = (UIView *)[touchLayers objectAtIndex:randomIndex];
+    
+    // Lateral
+    /*CABasicAnimation *animation =
+    [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:0.25];
+    [animation setRepeatCount:4];
+    [animation setAutoreverses:YES];
+    [animation setFromValue:[NSValue valueWithCGPoint:
+                             CGPointMake([l center].x - 5.0f, [l center].y)]];
+    [animation setToValue:[NSValue valueWithCGPoint:
+                           CGPointMake([l center].x + 5.0f, [l center].y)]];
+    [[l layer] addAnimation:animation forKey:@"position"];*/
+    
+    
+    // Rotational
+    CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    [anim setToValue:[NSNumber numberWithFloat:0.0f]];
+    [anim setFromValue:[NSNumber numberWithDouble:M_PI/19]]; // rotation angle
+    [anim setDuration:0.1];
+    [anim setRepeatCount:2];
+    [anim setAutoreverses:YES];
+    [[l layer] addAnimation:anim forKey:@"iconShake"];
+}
 
 @end

@@ -24,7 +24,7 @@
 @end
 
 @implementation HomeVC
-@synthesize titleLabel, subTitleLabel;
+@synthesize titleLabel, subTitleLabel, homeImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +40,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    /*homeImageView.animationImages = [NSArray arrayWithObjects:
+                                     [UIImage imageNamed:@"HOME1.gif"],
+                                     [UIImage imageNamed:@"HOME2.gif"],
+                                     [UIImage imageNamed:@"HOME2.gif"],
+                                     [UIImage imageNamed:@"HOME2.gif"],
+                                     [UIImage imageNamed:@"HOME3.gif"],
+                                     [UIImage imageNamed:@"HOME3.gif"],
+                                     [UIImage imageNamed:@"HOME3.gif"],
+                                     [UIImage imageNamed:@"HOME4.gif"],
+                                     [UIImage imageNamed:@"HOME4.gif"],
+                                     [UIImage imageNamed:@"HOME4.gif"],
+                                     [UIImage imageNamed:@"HOME3.gif"],
+                                     [UIImage imageNamed:@"HOME3.gif"],
+                                     [UIImage imageNamed:@"HOME3.gif"],
+                                     [UIImage imageNamed:@"HOME2.gif"],
+                                     [UIImage imageNamed:@"HOME2.gif"],
+                                     [UIImage imageNamed:@"HOME2.gif"],
+                                     nil];
+    
+    
+    homeImageView.animationDuration = 0.8;
+    homeImageView.animationRepeatCount = 0;
+    [homeImageView startAnimating];*/
+    homeImageView.image = [UIImage imageNamed:@"HOME1.gif"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
