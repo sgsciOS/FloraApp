@@ -10,6 +10,8 @@
 		9208482318E4F9FA00BE2F55 /* ModuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9208482218E4F9FA00BE2F55 /* ModuleVC.m */; };
 		9208CD0F18F8CD3500D83602 /* Flora_Garden.png in Resources */ = {isa = PBXBuildFile; fileRef = 9208CD0E18F8CD3500D83602 /* Flora_Garden.png */; };
 		9208CD1018F8CD3500D83602 /* Flora_Garden.png in Resources */ = {isa = PBXBuildFile; fileRef = 9208CD0E18F8CD3500D83602 /* Flora_Garden.png */; };
+		9208CD1118F8D0C300D83602 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9208CD1418F8D0C300D83602 /* libzbar.a */; };
+		9208CD1218F8D0C300D83602 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9208CD1418F8D0C300D83602 /* libzbar.a */; };
 		921894E417F7752A00DFB26B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921894E317F7752A00DFB26B /* Foundation.framework */; };
 		921894E617F7752A00DFB26B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921894E517F7752A00DFB26B /* CoreGraphics.framework */; };
 		921894E817F7752A00DFB26B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921894E717F7752A00DFB26B /* UIKit.framework */; };
@@ -69,15 +71,12 @@
 		92C261C11840414400FDA09B /* DragObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C261C01840414400FDA09B /* DragObject.m */; };
 		92C261C21840414400FDA09B /* DragObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C261C01840414400FDA09B /* DragObject.m */; };
 		92C2620518419B5600FDA09B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C2620418419B5600FDA09B /* QuartzCore.framework */; };
-		92D06A0118D13020004850C6 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D069FF18D13020004850C6 /* libzbar.a */; };
 		92D06A0318D13066004850C6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D06A0218D13066004850C6 /* AudioToolbox.framework */; };
 		92D06A0518D13076004850C6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D06A0418D13076004850C6 /* CoreMedia.framework */; };
 		92D06A0718D1307D004850C6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D06A0618D1307D004850C6 /* CoreVideo.framework */; };
 		92D06A0918D13085004850C6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D06A0818D13085004850C6 /* AVFoundation.framework */; };
 		92D06A0C18D130FC004850C6 /* Page_QRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D06A0B18D130FC004850C6 /* Page_QRCodeVC.m */; };
 		92D06A0D18D130FC004850C6 /* Page_QRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D06A0B18D130FC004850C6 /* Page_QRCodeVC.m */; };
-		92D06A1318D134AF004850C6 /* libzbar.a in Sources */ = {isa = PBXBuildFile; fileRef = 92D069FF18D13020004850C6 /* libzbar.a */; };
-		92D06A1418D13540004850C6 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D069FF18D13020004850C6 /* libzbar.a */; };
 		92D06A1618D137C7004850C6 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D06A1518D137C7004850C6 /* libiconv.dylib */; };
 		92D06A2118D140F4004850C6 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D06A1D18D140F4004850C6 /* zbar-back.png */; };
 		92D06A2218D140F4004850C6 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D06A1D18D140F4004850C6 /* zbar-back.png */; };
@@ -124,6 +123,7 @@
 		9208482118E4F9FA00BE2F55 /* ModuleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleVC.h; sourceTree = "<group>"; };
 		9208482218E4F9FA00BE2F55 /* ModuleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleVC.m; sourceTree = "<group>"; };
 		9208CD0E18F8CD3500D83602 /* Flora_Garden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flora_Garden.png; sourceTree = "<group>"; };
+		9208CD1318F8D0C300D83602 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/libzbar.a; sourceTree = "<group>"; };
 		921894E017F7752A00DFB26B /* Flora Dummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flora Dummy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		921894E317F7752A00DFB26B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		921894E517F7752A00DFB26B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -205,7 +205,6 @@
 		92D069FB18D12FF6004850C6 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		92D069FC18D12FF6004850C6 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		92D069FD18D12FF6004850C6 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		92D069FF18D13020004850C6 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		92D06A0218D13066004850C6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		92D06A0418D13076004850C6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		92D06A0618D1307D004850C6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -250,7 +249,7 @@
 				9218953617F776BA00DFB26B /* CoreData.framework in Frameworks */,
 				921894E817F7752A00DFB26B /* UIKit.framework in Frameworks */,
 				921894E417F7752A00DFB26B /* Foundation.framework in Frameworks */,
-				92D06A1418D13540004850C6 /* libzbar.a in Frameworks */,
+				9208CD1118F8D0C300D83602 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +259,7 @@
 			files = (
 				9218950617F7752A00DFB26B /* XCTest.framework in Frameworks */,
 				9218950817F7752A00DFB26B /* UIKit.framework in Frameworks */,
-				92D06A0118D13020004850C6 /* libzbar.a in Frameworks */,
+				9208CD1218F8D0C300D83602 /* libzbar.a in Frameworks */,
 				9218950717F7752A00DFB26B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,7 +397,7 @@
 		92D069FE18D1300B004850C6 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
-				92D069FF18D13020004850C6 /* libzbar.a */,
+				9208CD1418F8D0C300D83602 /* libzbar.a */,
 				92D069F218D12FE3004850C6 /* zbar */,
 				92D069F318D12FF6004850C6 /* zbar.h */,
 				92D069F418D12FF6004850C6 /* ZBarCameraSimulator.h */,
@@ -687,7 +686,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D06A1318D134AF004850C6 /* libzbar.a in Sources */,
 				92B193931825F2F500F1583E /* PageManager.m in Sources */,
 				9282390C18B0085200223265 /* FormattedVC.m in Sources */,
 				92B193A3182F29F200F1583E /* Page_ReadVC.m in Sources */,
@@ -738,6 +736,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9208CD1418F8D0C300D83602 /* libzbar.a */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9208CD1318F8D0C300D83602 /* en */,
+			);
+			name = libzbar.a;
+			sourceTree = "<group>";
+		};
 		921894EC17F7752A00DFB26B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -133,7 +133,7 @@
     singleTapGestureRecognizer.cancelsTouchesInView = NO;
     [scrollView addGestureRecognizer:singleTapGestureRecognizer];
     
-    gardenImage = [UIImage imageNamed:@"Garden_Top.jpg"];
+    gardenImage = [UIImage imageNamed:@"Flora_Garden.png"];
 
     gardenImageView = [[UIImageView alloc] initWithFrame:CGRectMake((GV_WIDTH - gardenImage.size.width)/ 2.0,
                                                                     (GV_HEIGHT - gardenImage.size.height)/ 2.0,
