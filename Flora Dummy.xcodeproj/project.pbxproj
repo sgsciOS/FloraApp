@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9208482318E4F9FA00BE2F55 /* ModuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9208482218E4F9FA00BE2F55 /* ModuleVC.m */; };
+		9208CD0F18F8CD3500D83602 /* Flora_Garden.png in Resources */ = {isa = PBXBuildFile; fileRef = 9208CD0E18F8CD3500D83602 /* Flora_Garden.png */; };
+		9208CD1018F8CD3500D83602 /* Flora_Garden.png in Resources */ = {isa = PBXBuildFile; fileRef = 9208CD0E18F8CD3500D83602 /* Flora_Garden.png */; };
 		921894E417F7752A00DFB26B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921894E317F7752A00DFB26B /* Foundation.framework */; };
 		921894E617F7752A00DFB26B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921894E517F7752A00DFB26B /* CoreGraphics.framework */; };
 		921894E817F7752A00DFB26B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921894E717F7752A00DFB26B /* UIKit.framework */; };
@@ -121,6 +123,7 @@
 /* Begin PBXFileReference section */
 		9208482118E4F9FA00BE2F55 /* ModuleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleVC.h; sourceTree = "<group>"; };
 		9208482218E4F9FA00BE2F55 /* ModuleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleVC.m; sourceTree = "<group>"; };
+		9208CD0E18F8CD3500D83602 /* Flora_Garden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flora_Garden.png; sourceTree = "<group>"; };
 		921894E017F7752A00DFB26B /* Flora Dummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flora Dummy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		921894E317F7752A00DFB26B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		921894E517F7752A00DFB26B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -530,6 +533,7 @@
 				92EF999718B6F5CD00288BAF /* GardenDetailVC.m */,
 				92EF999818B6F5CD00288BAF /* GardenDetailVC.xib */,
 				92EF999318B6E6AD00288BAF /* Garden_Top.jpg */,
+				9208CD0E18F8CD3500D83602 /* Flora_Garden.png */,
 			);
 			name = Page_GardenData;
 			sourceTree = "<group>";
@@ -627,6 +631,7 @@
 				92D06A2118D140F4004850C6 /* zbar-back.png in Resources */,
 				926C9B1118E4EA69006CDB2F /* HOME1.gif in Resources */,
 				92C261BA1839D40800FDA09B /* barrel.png in Resources */,
+				9208CD0F18F8CD3500D83602 /* Flora_Garden.png in Resources */,
 				92C261B61839D40800FDA09B /* apple_red.png in Resources */,
 				92C261BD183BFBBC00FDA09B /* woods.png in Resources */,
 				92E8CB4F18F0C4BD0025264E /* Wind2.gif in Resources */,
@@ -667,6 +672,7 @@
 				92F406501801ED2D00668376 /* Flora DUmmy 4.png in Resources */,
 				92E8CB5218F0C4BD0025264E /* Wind3.gif in Resources */,
 				B8810609189D6E1F00424E32 /* Storyboard.storyboard in Resources */,
+				9208CD1018F8CD3500D83602 /* Flora_Garden.png in Resources */,
 				92E8CB4E18F0C4BD0025264E /* Wind1.gif in Resources */,
 				926C9B1218E4EA69006CDB2F /* HOME1.gif in Resources */,
 				92D06A2418D140F4004850C6 /* zbar-help.html in Resources */,
